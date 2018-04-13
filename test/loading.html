@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<head>
+    <title>数据加载插件</title>
+    <link rel="stylesheet" type="text/css" href="../css/loading.css">
+    <script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../js/loading.js"></script>
+    <style type="text/css">
+    * {
+        margin: 0;
+        padding: 0
+    }
+    
+    
+    .header{ height: 40px; line-height: 40px;overflow: hidden; font-size: 0 }
+    .header > div{ width: 25%; display: inline-block; border-right: 1px solid #ccc;box-sizing: border-box;
+        text-align: center; background-color: #428BCA; color: #fff; font-size: 24px; cursor: pointer;}
+    .header > div:nth-child(2){ background-color: #5CB85C;}
+    .header > div:nth-child(3){ background-color: #F0AD4E;}
+
+
+    .main {
+        width: 100%;
+        overflow: hidden;
+        margin-top: 40px;
+    }
+    
+    .left {
+        float: left;
+        width: 50%;
+        border: 1px solid #ccc;   
+        height: 500px;
+    }
+    
+    .right {
+        float: right;
+        width: 49%;
+        height: 500px;
+         border: 1px solid #ccc;
+    }    
+    
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="col4" onclick="loadFn(true)">开始读取</div>
+        <div class="col4" onclick="loadFn(false)">读取完毕</div>
+      
+    </div>
+
+    <div class="main">
+        <div id="msg" class="left">
+            <p>内容内容</p>
+            <p>内容内容</p>
+            <p>内容内容</p>
+        </div>
+        <div id="msg1" class="right">
+        </div>
+    </div>
+
+    <script type="text/javascript">
+    
+
+
+    var msg,bodyLoading;
+    $(document).ready(function() {
+        $("body").height($(window).height())
+       bodyLoading = $("body").myLoading();
+       bodyLoading.init();
+       setTimeout(function() {
+             bodyLoading.destroy();
+        }, 2000)
+
+
+
+        msg = $("#msg").myLoading({
+            msg: '请稍后',
+            mask: true,
+            img:true,
+            callback:function(){
+                alert(1111)
+            }
+        });
+        msg.init();
+
+        var msg1 = $("#msg1").myLoading({mask:false,img:false});
+        msg1.init();     
+
+    });
+
+     function loadFn(flag)
+     {
+        flag?msg.init():msg.destroy(true);     
+
+     }
+
+
+    </script>
+</body>
+
+</html>

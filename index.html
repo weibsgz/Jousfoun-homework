@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>魏彬的首页</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/css.css">
+    <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+    <style>
+    body{background: #f7f7f7}
+    .main {
+        overflow: hidden;
+        padding: 30px;
+        width: 60%;
+        margin: 0 auto;
+    }
+    
+    .main ul li.active{ 
+        transform: translate3d(0,0,0);   
+        -moz-transform: translate3d(0,0,0);    
+        -webkit-transform: translate3d(0,0,0);
+      /* position: absolute;*/
+        
+    }
+
+    
+
+    .main ul li
+    {
+         transform: translate3d(200%,0,0);
+         -moz-transform: translate3d(200%,0,0);
+         -webkit-transform: translate3d(200%,0,0);
+         height: 40px;
+        line-height: 40px;
+        text-align: center;
+        border: 1px solid #ccc;
+        color: #666;
+        cursor: pointer;
+        margin-right: 25px;
+        margin-top: 20px;
+        font-size: 20px;
+        background: #fff;
+        border-radius: 3px;
+        transition: all .6s ease-in;
+         -moz-transition: all .6s ease-in;
+         -webkit-transition: all .6s ease-in;
+    }
+
+      .main ul li:nth-of-type(odd)
+    {
+         -webkit-transform: translate3d(-200%,0,0);
+    }
+
+     .main ul li:nth-of-type(odd).active
+    {
+         -webkit-transform: translate3d(0,0,0);
+         -moz-transform: translate3d(0,0,0);
+         transform: translate3d(0,0,0);
+    }
+
+    
+    .main ul li:hover {
+        background: #3c13af;
+        color: #fff;
+    }
+    
+    .main ul li:hover a {
+        color: #fff;
+        display: block;
+    }
+
+    .title{height: 100px; background: #1D365D ; font-size: 30px; line-height: 100px; padding-left: 50px; color: #fff;}
+    </style>
+</head>
+
+<body> <div class="title">
+            <h2>我的练习</h2>
+        </div>
+    <div class="main">
+       
+        <ul>
+            <li id="daojishi"><a href="test/daojishi.html">弹出层倒计时</a></li>
+            <li id="ss"><a href="test/ss.html">css滑块</a></li>
+            <li ><a href="test/word.html">文字打印</a></li>
+            <li ><a href="test/loading.html">加载插件</a></li>
+            <li ><a href="test/layout1.html">仿WIN8布局</a></li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+    function iframeHeight() {
+        $("#frame").height($(window).height() - 5)
+    }
+
+    window.onresize = function() {
+        iframeHeight();
+    }
+
+    var baseUrl = ''
+    $(function() {
+        iframeHeight();
+        $("ul li").click(function() {
+            var url = $(this).attr("id");
+            $("#frame").attr("src", "test/" + url + ".html")
+
+        })
+    })
+
+   
+    $(function() {
+       
+            $(".main ul li").each(function(){
+                $(this).addClass("active")
+            })
+       
+    })
+    </script>
+</body>
+
+</html>
